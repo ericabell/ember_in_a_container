@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  web:
+    image: eabell/ember_in_a_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ember build --watch
+    #entrypoint: /usr/src/app/my-ember-app/development-entrypoint
+
+    volumes:
+      - .:/usr/src/app
+
+    stdin_open: true
+
+    tty: true
+
+    ports:
+      - 4200:4200
+      - 35730:35730
