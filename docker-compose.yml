@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ember build --watch
-    #entrypoint: /usr/src/app/my-ember-app/development-entrypoint
+    #command: ember build --watch
+    entrypoint: /usr/src/app/my-ember-app/development-entrypoint
 
     volumes:
       - .:/usr/src/app
@@ -19,3 +19,11 @@ services:
     ports:
       - 4200:4200
       - 35730:35730
+  database:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+    ports:
+      - 8080:8080
